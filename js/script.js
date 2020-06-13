@@ -1,5 +1,18 @@
 let money, income, addExpenses, deposit, mission, period;
-mission = 'Do you see this window?'
-
-alert(mission);
-console.log('mission: ', mission);
+money = 80000;
+console.log(typeof money);
+income = 'фриланс';
+console.log(typeof income);
+deposit = true;
+console.log(typeof deposit);
+mission = 500000;
+period = 12;
+addExpenses = ('Интернет, Коммуналка, Продукты, Такси');
+console.log(addExpenses.length);
+console.log('Период равен ' + period + ' месяцев');
+console.log('Цель заработать ' + mission + ' рублей');
+console.log(addExpenses.toLowerCase());
+console.log(addExpenses.split(', '));
+let budgetDay;
+budgetDay = money / 30;
+console.log('budgetDay: ', budgetDay);
