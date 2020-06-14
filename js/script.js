@@ -1,18 +1,50 @@
+'use stict';
+//исходные переменные и их значения
 let money, income, addExpenses, deposit, mission, period;
-money = 80000;
+money = +prompt('Ваш месячный доход?');
 console.log(typeof money);
 income = 'фриланс';
 console.log(typeof income);
-deposit = true;
+deposit = confirm('Есть ли у вас депозит в банке?');
 console.log(typeof deposit);
 mission = 500000;
 period = 12;
-addExpenses = ('Интернет, Коммуналка, Продукты, Такси');
+addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+//определение количество символов
 console.log(addExpenses.length);
+//применение Конкатенации
 console.log('Период равен ' + period + ' месяцев');
 console.log('Цель заработать ' + mission + ' рублей');
+//приведение к нижнему регистру
 console.log(addExpenses.toLowerCase());
+//разделение объекта на составляющие массива
 console.log(addExpenses.split(', '));
+//определение дневного бюджета
 let budgetDay;
-budgetDay = money / 30;
-console.log('budgetDay: ', budgetDay);
+//обязательные ежемесячные расходы
+let expenses1, expenses2, amount1, amount2;
+expenses1 = prompt('Введите одну обязательную статью расходов?');
+amount1 = +prompt('Во сколько это обойдется?');
+expenses2 = prompt('Введите еще одну обязательную статью расходов?');
+amount2 = +prompt('Во сколько это обойдется?');
+//определение месячного бюджета
+let budgetMonth = money - amount1 - amount2;
+console.log('Бюджет на месяц: ' + budgetMonth);
+mission = Math.ceil(mission / budgetMonth);
+if (mission <= 12) {
+  console.log('Цель будет достигнута за: ' + budgetMonth);
+} else {
+  alert('К сожилению ваш месячный бюджет мал, вы не достигните цели за 12 месяцев');
+}
+//корректировка ежедневного бюджета
+budgetDay = Math.floor(budgetMonth / 30);
+console.log('Бюджет на день ' + budgetDay);
+if (budgetDay >= 1200) {
+  console.log('У вас высокий уровень дохода');
+} else if (budgetDay >= 600 && budgetDay < 1200) {
+  console.log('У вас средний уровень дохода');
+} else if (budgetDay < 600) {
+  console.log('К сожалению у вас уровень дохода ниже среднего');
+} else {
+  console.log('Что то пошло не так');
+}
