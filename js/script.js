@@ -1,7 +1,7 @@
 'use stict';
 //исходные переменные и их значения
 let money, income, addExpenses, deposit, mission, period;
-money = +prompt('Ваш месячный доход?');
+money = +prompt('Ваш месячный доход?', '75000');
 console.log(typeof money);
 income = 'фриланс';
 console.log(typeof income);
@@ -23,16 +23,17 @@ console.log(addExpenses.split(', '));
 let budgetDay;
 //обязательные ежемесячные расходы
 let expenses1, expenses2, amount1, amount2;
-expenses1 = prompt('Введите одну обязательную статью расходов?');
-amount1 = +prompt('Во сколько это обойдется?');
-expenses2 = prompt('Введите еще одну обязательную статью расходов?');
-amount2 = +prompt('Во сколько это обойдется?');
+expenses1 = prompt('Введите одну обязательную статью расходов?', 'коммунальные услуги');
+amount1 = +prompt('Во сколько это обойдется?', '5000');
+expenses2 = prompt('Введите еще одну обязательную статью расходов?', 'продукты');
+amount2 = +prompt('Во сколько это обойдется?', '20000');
 //определение месячного бюджета
 let budgetMonth = money - amount1 - amount2;
 console.log('Бюджет на месяц: ' + budgetMonth);
-mission = Math.ceil(mission / budgetMonth);
-if (mission <= 12) {
-  console.log('Цель будет достигнута за: ' + budgetMonth);
+//определение периода выполнения поставленной миссии
+let missionMonth = Math.ceil(mission / budgetMonth);
+if (missionMonth <= 12) {
+  console.log('Цель будет достигнута за: ' + missionMonth + ' месяцев');
 } else {
   alert('К сожилению ваш месячный бюджет мал, вы не достигните цели за 12 месяцев');
 }
