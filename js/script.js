@@ -12,7 +12,7 @@ period = 12;
 
 let start = function () {
   do {
-    money = prompt('Ваш месячный доход?');
+    money = prompt('Ваш месячный доход?', '75000');
   }
   while (!isNumber(money))
 }
@@ -40,9 +40,9 @@ let getExpensesMonth = function () {
     } else if (i === 1) {
       expenses2 = prompt('Введите еще одну обязательную статью расходов?', 'продукты');
     }
-    let sumOne = prompt('Во сколько это обойдется?');
+    let sumOne = prompt('Во сколько это обойдется?', '10000');
     while (!isNumber(sumOne)) {
-      sumOne = prompt('Во сколько это обойдется?');
+      sumOne = prompt('Во сколько это обойдется?', '10000');
     }
     sum += Number(sumOne)
   }
@@ -64,7 +64,7 @@ function getTargetMonth() {
   if (target <= 0) {
     return ('Цель не будет достигнута');
   } else {
-    return ('Cрок достижения цели ' + getTargetMonth() + ' месяцев');
+    return ('Cрок достижения цели ' + target + ' месяцев');
   }
 };
 let targetMonth = getTargetMonth();
