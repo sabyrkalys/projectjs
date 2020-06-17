@@ -3,32 +3,40 @@ let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n)
 }
 
-//исходные переменные и их значения
-let money, income, addExpenses, deposit, mission, period;
-income = 'фриланс';
-deposit = confirm('Есть ли у вас депозит в банке?');
-mission = 500000;
-period = 12;
-
-let start = function () {
-  do {
-    money = prompt('Ваш месячный доход?');
+let money,
+  start = function () {
+    do {
+      money = prompt('Ваш месячный доход?', '75000');
+    }
+    while (!isNumber(money))
   }
-  while (!isNumber(money))
-}
 
 start();
+
+let appData = {
+  income: {},
+  addIncome: [],
+  expenses: {},
+  addExpenses: [],
+  deposit: false,
+  mission: 500000,
+  period: 12,
+  asking: function () {
+    let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+    appData.addExpenses = addExpenses.toLowerCase().split(', ');
+    appData.deposit = confirm('Есть ли у вас депозит в банке?');
+
+  }
+};
 
 let showTypeOf = function (data) {
   console.log(data, typeof (data));
 };
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
+showTypeOf(appData.money);
+showTypeOf(appData.income);
+showTypeOf(appData.deposit);
 
-addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-//разделение объекта на составляющие массива
-console.log(addExpenses.toLowerCase().split(', '));
+
 
 //обязательные ежемесячные расходы
 let expenses1, expenses2;
@@ -40,9 +48,9 @@ let getExpensesMonth = function () {
     } else if (i === 1) {
       expenses2 = prompt('Введите еще одну обязательную статью расходов?', 'продукты');
     }
-    let sumOne = prompt('Во сколько это обойдется?');
+    let sumOne = prompt('Во сколько это обойдется?', '5000');
     while (!isNumber(sumOne)) {
-      sumOne = prompt('Во сколько это обойдется?');
+      sumOne = prompt('Во сколько это обойдется?', '20000');
     }
     sum += Number(sumOne)
   }
@@ -54,17 +62,17 @@ console.log('Расходы за месяц ' + expensesAmount);
 
 //определение месячного бюджета
 function getAccumulatedMonth() {
-  return money - expensesAmount;
+  return appData.money - expensesAmount;
 };
 let accumulatedMonth = getAccumulatedMonth();
 
 //Cрок достижения цели
 function getTargetMonth() {
-  let target = Math.ceil(mission / accumulatedMonth);
+  let target = Math.ceil(appData.mission / accumulatedMonth);
   if (target <= 0) {
     return ('Цель не будет достигнута');
   } else {
-    return ('Cрок достижения цели ' + getTargetMonth() + ' месяцев');
+    return ('Cрок достижения цели ' + target + ' месяцев');
   }
 };
 let targetMonth = getTargetMonth();
