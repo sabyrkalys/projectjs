@@ -3,12 +3,25 @@ let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n)
 }
 
+<<<<<<< HEAD
 let money,
   start = function () {
     do {
       money = prompt('Ваш месячный доход?', '75000');
     }
     while (!isNumber(money))
+=======
+//исходные переменные и их значения
+let money, income, addExpenses, deposit, mission, period;
+income = 'фриланс';
+deposit = confirm('Есть ли у вас депозит в банке?');
+mission = 500000;
+period = 12;
+
+let start = function () {
+  do {
+    money = prompt('Ваш месячный доход?', '75000');
+>>>>>>> 34505e5acd37cd9785a62e4419a0222c2337a37e
   }
 
 start();
@@ -48,9 +61,15 @@ let getExpensesMonth = function () {
     } else if (i === 1) {
       expenses2 = prompt('Введите еще одну обязательную статью расходов?', 'продукты');
     }
+<<<<<<< HEAD
     let sumOne = prompt('Во сколько это обойдется?', '5000');
     while (!isNumber(sumOne)) {
       sumOne = prompt('Во сколько это обойдется?', '20000');
+=======
+    let sumOne = prompt('Во сколько это обойдется?', '10000');
+    while (!isNumber(sumOne)) {
+      sumOne = prompt('Во сколько это обойдется?', '10000');
+>>>>>>> 34505e5acd37cd9785a62e4419a0222c2337a37e
     }
     sum += Number(sumOne)
   }
