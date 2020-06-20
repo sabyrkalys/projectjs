@@ -48,6 +48,15 @@ let appData = {
 
     let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'продукты, кино, такси');
     appData.addExpenses = addExpenses.toLowerCase().split(', ');
+    let lower, firstLetter, capitalized, result;
+    for (let i = 0; i < appData.addExpenses.length; i++) {
+      lower = appData.addExpenses[i];
+      firstLetter = lower.slice(0, 1);
+      capitalized = lower.replace(firstLetter, firstLetter.toUpperCase());
+      result = capitalized.split(', ');
+      elements = result.join(', ');
+
+    }
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
     appData.getExpensesMonth = function () {
@@ -143,13 +152,4 @@ for (let key in appData) {
 appData.getInfoDeposit();
 console.log(appData.calcSavedMoney(), appData.percentDeposit, appData.moneyDeposit);
 console.log('appData.income: ', appData.income);
-
-
-let lower, firstLetter, capitalized, result;
-for (let i = 0; i < appData.addExpenses.length; i++) {
-  lower = appData.addExpenses[i];
-  firstLetter = lower.slice(0, 1);
-  capitalized = lower.replace(firstLetter, firstLetter.toUpperCase());
-  result = capitalized;
-  console.log('result: ', result);
-}
+console.log('elements: ', elements);
